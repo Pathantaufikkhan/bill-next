@@ -4,7 +4,7 @@ import { useRef, useState} from "react";
 import jsPDF from "jspdf";
 import domtoimage from "dom-to-image";
 import {  toast } from "sonner";
-import Image from 'next/image';
+// import Image from 'next/image';
 
 
 
