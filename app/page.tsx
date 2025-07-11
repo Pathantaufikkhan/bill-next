@@ -215,8 +215,8 @@ Thank you for choosing us!
                 <Label>Bill Number</Label>
                 <Input
                   value={billNo}
-                  onChange={(e) => setBillNo(e.target.value)}
-                  disabled
+                 
+                  
                   placeholder="Manual add"
                 />
               </div>
