@@ -1,9 +1,13 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState} from "react";
 import jsPDF from "jspdf";
 import domtoimage from "dom-to-image";
-import { Toaster, toast } from "sonner";
+import {  toast } from "sonner";
+import Image from 'next/image';
+
+
+
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -62,7 +66,7 @@ export default function BillingPage() {
         format: "a4",
       });
 
-      const img = new Image();
+      const img = document.createElement("img") as HTMLImageElement;
       img.src = dataUrl;
       img.onload = () => {
         const imgProps = pdf.getImageProperties(img);
