@@ -166,8 +166,8 @@ Thank you for choosing us!
   };
 
   return (
-    <div className="flex justify-center items-start min-h-screen bg-gray-50 p-4">
-      <div className="space-y-8 w-full max-w-5xl">
+    <div className="min-h-screen bg-gray-50 p-4 flex justify-center items-start">
+      <div className="w-full max-w-5xl space-y-8">
         {/* Billing Form */}
         <Card className="shadow-lg">
           <CardContent className="space-y-6 p-6">
