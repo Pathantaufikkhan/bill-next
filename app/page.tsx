@@ -1,13 +1,10 @@
 "use client";
 
-import { useRef, useState} from "react";
+import { useRef, useState } from "react";
 import jsPDF from "jspdf";
 import domtoimage from "dom-to-image";
-import {  toast } from "sonner";
+import { toast } from "sonner";
 // import Image from 'next/image';
-
-
-
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -19,7 +16,7 @@ export default function BillingPage() {
   const [customerName, setCustomerName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [billNo, setBillNo] = useState("");
+  const [billNo,setBillNo] = useState("");
   const [date, setDate] = useState("");
   const [frameType, setFrameType] = useState("");
   const [lensType, setLensType] = useState("");
@@ -74,7 +71,7 @@ export default function BillingPage() {
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
         pdf.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
-        pdf.save(`${billNo || "Qwality_Optical_Bill"}.pdf`);
+        pdf.save(`${billNo || `${customerName}`+"bill"}.pdf`);
         toast.success("PDF generated successfully!");
       };
     } catch (err) {
@@ -155,13 +152,13 @@ Thank you for choosing us!
   const [showPreview, setShowPreview] = useState(false);
 
   const handleGenerateBill = () => {
-  if (!customerName || !phone || !amount) {
-  return toast.error("Name, phone, and amount are required.");
-}
-      if (!date) {
-        const today = new Date().toISOString().split("T")[0];
-        setDate(today);
-      }
+    if (!customerName || !phone || !amount) {
+      return toast.error("Name, phone, and amount are required.");
+    }
+    if (!date) {
+      const today = new Date().toISOString().split("T")[0];
+      setDate(today);
+    }
     setShowPreview(true);
     toast.success(
       "Bill generated successfully! now you can print or send it via email."
@@ -169,7 +166,6 @@ Thank you for choosing us!
   };
 
   return (
-    
     <div className="flex justify-center items-start min-h-screen bg-gray-50 p-4">
       <div className="space-y-8 w-full max-w-5xl">
         {/* Billing Form */}
@@ -215,11 +211,11 @@ Thank you for choosing us!
                 <Label>Bill Number</Label>
                 <Input
                   value={billNo}
-                 
-                  
                   placeholder="Manual add"
+                  onChange={(e) => setBillNo(e.target.value)}
                 />
               </div>
+
               <div>
                 <Label>Date</Label>
                 <Input
