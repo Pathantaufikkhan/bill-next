@@ -59,7 +59,7 @@ export default function BillingPage() {
       const dataUrl = await domtoimage.toPng(printRef.current);
       const pdf = new jsPDF({
         orientation: "portrait",
-        unit: "pt",
+        unit: "px",
         format: "a4",
       });
 
